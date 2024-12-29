@@ -1,7 +1,7 @@
 function loadImages() {
     const imageContainer = document.querySelector('#gallery-grid');
     
-    fetch('assets/')
+    fetch('blob/main/assets/')
         .then(response => response.text())
         .then(data => {
             const parser = new DOMParser();
