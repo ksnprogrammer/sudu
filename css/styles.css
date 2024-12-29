@@ -5,7 +5,7 @@ and cursive text, along with styles for the layout of the image gallery.
 */
 
 body {
-  background-color: #1a1a1a; /* Dark background */
+  background-color: #000000; /* Dark background */
   color: #ff4d4d; /* Red text */
   font-family: 'Cursive', sans-serif; /* Cursive font */
   margin: 0;
