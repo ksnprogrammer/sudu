@@ -1,18 +1,16 @@
 function loadImages() {
     const imageContainer = document.querySelector('#gallery-grid');
     
-    // Fetch all images from assets directory
     fetch('assets/')
         .then(response => response.text())
         .then(data => {
-            // Parse HTML response to get image files
             const parser = new DOMParser();
             const doc = parser.parseFromString(data, 'text/html');
             const files = Array.from(doc.querySelectorAll('a'))
                 .map(a => a.href)
-                .filter(href => href.match(/\.(jpg|jpeg|png|gif)$/i));
+                .filter(href => href.match(/\.(jpg|jpeg|png|gif)$/i))
+                .filter(href => !href.includes('IMG_20241227_124410.jpg')); // Exclude the unwanted image
 
-            // Generate image elements
             files.forEach((file, index) => {
                 const div = document.createElement('div');
                 div.className = 'transform transition-all hover:-translate-y-2';
