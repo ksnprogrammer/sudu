@@ -12,234 +12,34 @@
             background: linear-gradient(135deg, #0a0a0a, #222222);
             color: white;
             font-family: 'Arial', sans-serif;
-            overflow-x: hidden; /* Prevent horizontal scrolling */
-        }
-
-        /* Custom Font for Titles */
-        .font-cursive {
-            font-family: 'Dancing Script', cursive;
-        }
-
-        /* Masonry Grid Layout */
-        .masonry-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 16px;
-        }
-
-        .masonry-item {
-            break-inside: avoid;
-            margin-bottom: 16px;
-            transition: all 0.3s ease-in-out;
-        }
-
-        .masonry-item img {
-            width: 100%;
-            height: auto;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-        }
-
-        .masonry-item:hover img {
-            transform: scale(1.05);
-            box-shadow: 0 8px 16px rgba(255, 77, 77, 0.5);
-        }
-
-        /* Heart Animation */
-        .heart {
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23ff4d4d"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>') no-repeat center center;
-            background-size: contain;
-            animation: fall linear infinite;
-        }
-
-        @keyframes fall {
-            0% {
-                transform: translateY(-100vh) rotate(0deg);
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(100vh) rotate(360deg);
-                opacity: 0;
-            }
-        }
-
-        /* Loader Animation */
-        .loader {
-            border: 4px solid rgba(255, 255, 255, 0.3);
-            border-top: 4px solid #ff4d4d;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            animation: spin 1s linear infinite;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        /* Infinite Scroll Loader */
-        #infinite-scroll-loader {
-            text-align: center;
-            padding: 20px;
-            display: none;
-        }
-
-        /* Responsive Design */
-        @media (min-width: 768px) {
-            h1 {
-                font-size: 6rem;
-            }
-
-            p {
-                font-size: 1.5rem;
-            }
+            overflow-x: hidden;
+            overflow-y: auto; /* Ensures scrollbar visibility */
+            scroll-behavior: smooth; /* Smooth scrolling */
         }
     </style>
 </head>
 <body class="flex flex-col min-h-screen text-center relative overflow-hidden">
-    <!-- Heart Rain Animation -->
-    <div id="heart-rain"></div>
-
-    <!-- Loader -->
-    <div id="loader" class="fixed inset-0 flex items-center justify-center bg-black z-50">
-        <div class="loader"></div>
-    </div>
-
-    <!-- Main Content -->
-    <div id="content" class="hidden">
-        <!-- Header -->
-        <header class="container mx-auto px-4 py-8">
-            <h1 class="font-cursive text-red-500 text-5xl md:text-6xl mb-4 fade-in">Memories Worldy</h1>
-            <p class="font-cursive text-red-400 text-xl italic fade-in">"Every moment we share becomes a beautiful memory"</p>
-        </header>
-
-        <!-- Gallery -->
-        <main class="container mx-auto px-4 py-8" id="gallery">
-            <div id="masonry-grid" class="masonry-grid">
-                <!-- Initial Images -->
-                <div class="masonry-item">
-                    <img src="assets/IMG_20241227_124312.jpg" alt="Gallery Image 1">
-                </div>
-                <div class="masonry-item">
-                    <img src="assets/IMG_20241227_124314.jpg" alt="Gallery Image 2">
-                </div>
-                <div class="masonry-item">
-                    <img src="assets/IMG_20241227_124318.jpg" alt="Gallery Image 3">
-                </div>
-                <div class="masonry-item">
-                    <img src="assets/IMG_20241227_124321.jpg" alt="Gallery Image 4">
-                </div>
-                <div class="masonry-item">
-                    <img src="assets/IMG_20241227_124323.jpg" alt="Gallery Image 5">
-                </div>
-                <div class="masonry-item">
-                    <img src="assets/IMG_20241227_124327.jpg" alt="Gallery Image 6">
-                </div>
-                <div class="masonry-item">
-                    <img src="assets/IMG_20241227_124343.jpg" alt="Gallery Image 7">
-                </div>
-                <div class="masonry-item">
-                    <img src="assets/IMG_20241227_124346.jpg" alt="Gallery Image 8">
-                </div>
-                <div class="masonry-item">
-                    <img src="assets/IMG_20241227_124353.jpg" alt="Gallery Image 9">
-                </div>
-                <div class="masonry-item">
-                    <img src="assets/IMG_20241227_124404.jpg" alt="Gallery Image 10">
-                </div>
-                <div class="masonry-item">
-                    <img src="assets/IMG_20241227_124410.jpg" alt="Gallery Image 11">
-                </div>
+    <!-- Header -->
+    <header class="container mx-auto px-4 py-8">
+        <h1 class="font-cursive text-red-500 text-5xl md:text-6xl mb-4">Memorise</h1>
+        <p class="font-cursive text-red-400 text-xl italic">"Every moment we share becomes a beautiful memory"</p>
+    </header>
+    
+    <!-- Gallery (Renamed to Memorise) -->
+    <main class="container mx-auto px-4 py-8" id="memorise">
+        <div id="masonry-grid" class="masonry-grid">
+            <div class="masonry-item">
+                <img src="assets/IMG_20241227_124312.jpg" alt="Memory Image 1">
             </div>
-
-            <!-- Infinite Scroll Loader -->
-            <div id="infinite-scroll-loader">
-                <div class="loader"></div>
+            <div class="masonry-item">
+                <img src="assets/IMG_20241227_124314.jpg" alt="Memory Image 2">
             </div>
-        </main>
-
-        <!-- Footer -->
-        <footer class="container mx-auto px-4 py-8">
-            <p class="font-cursive text-red-500 text-2xl">~ K_Sithara ❤️🖤 ~</p>
-        </footer>
-    </div>
-
-    <script>
-        // Generate Heart Rain
-        const heartRain = document.getElementById('heart-rain');
-        for (let i = 0; i < 50; i++) {
-            const heart = document.createElement('div');
-            heart.classList.add('heart');
-            heart.style.left = `${Math.random() * 100}vw`;
-            heart.style.animationDuration = `${Math.random() * 3 + 2}s`;
-            heart.style.opacity = Math.random();
-            heart.style.width = `${Math.random() * 10 + 10}px`;
-            heart.style.height = `${Math.random() * 10 + 10}px`;
-            heartRain.appendChild(heart);
-        }
-
-        // Hide loader and show content after 2 seconds
-        setTimeout(() => {
-            document.getElementById('loader').classList.add('hidden');
-            document.getElementById('content').classList.remove('hidden');
-        }, 2000);
-
-        // Infinite Scroll Functionality
-        let page = 1; // Track the current page of images
-        const grid = document.getElementById('masonry-grid');
-        const loader = document.getElementById('infinite-scroll-loader');
-
-        function loadMoreImages() {
-            loader.style.display = 'block'; // Show loader
-
-            // Simulate fetching new images (replace with actual API call if needed)
-            setTimeout(() => {
-                const newImages = [
-                    "assets/IMG_20241227_124312.jpg",
-                    "assets/IMG_20241227_124314.jpg",
-                    "assets/IMG_20241227_124318.jpg",
-                    "assets/IMG_20241227_124321.jpg",
-                    "assets/IMG_20241227_124323.jpg",
-                    "assets/IMG_20241227_124327.jpg",
-                    "assets/IMG_20241227_124343.jpg",
-                    "assets/IMG_20241227_124346.jpg",
-                    "assets/IMG_20241227_124353.jpg",
-                    "assets/IMG_20241227_124404.jpg",
-                    "assets/IMG_20241227_124410.jpg"
-                ];
-
-                newImages.forEach(image => {
-                    const item = document.createElement('div');
-                    item.classList.add('masonry-item');
-                    item.innerHTML = `<img src="${image}" alt="Gallery Image">`;
-                    grid.appendChild(item);
-                });
-
-                loader.style.display = 'none'; // Hide loader
-                page++; // Increment page
-            }, 1500); // Simulated delay
-        }
-
-        // Trigger infinite scroll when user scrolls near the bottom
-        window.addEventListener('scroll', () => {
-            const { scrollTop, clientHeight, scrollHeight } = document.documentElement;
-
-            if (scrollTop + clientHeight >= scrollHeight - 200) {
-                loadMoreImages();
-            }
-        });
-
-        // Initial Load (Optional: Trigger loading more images if the page is too short)
-        window.addEventListener('load', () => {
-            if (document.documentElement.scrollHeight <= window.innerHeight) {
-                loadMoreImages();
-            }
-        });
-    </script>
+        </div>
+    </main>
+    
+    <!-- Footer -->
+    <footer class="container mx-auto px-4 py-8">
+        <p class="font-cursive text-red-500 text-2xl">~ K_Sithara ❤️🖤 ~</p>
+    </footer>
 </body>
 </html>
