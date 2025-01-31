@@ -66,14 +66,25 @@
             100% { transform: rotate(360deg); }
         }
 
-        /* Text Animation */
-        .fade-in {
-            animation: fadeIn 2s ease-in-out;
+        /* Scroll-to-Bottom Button */
+        #scroll-to-bottom {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #ff4d4d;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: none;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease-in-out;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
+        #scroll-to-bottom:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.4);
         }
 
         /* Responsive Design */
@@ -106,7 +117,7 @@
         </header>
 
         <!-- Gallery -->
-        <main class="container mx-auto px-4 py-8">
+        <main class="container mx-auto px-4 py-8" id="gallery">
             <div id="gallery-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 <div class="gallery-item transform transition-all">
                     <img src="assets/IMG_20241227_124312.jpg" alt="Gallery Image 1" class="w-full rounded-lg shadow-lg">
@@ -148,6 +159,9 @@
         <footer class="container mx-auto px-4 py-8">
             <p class="font-cursive text-red-500 text-2xl">~ K_Sithara ❤️🖤 ~</p>
         </footer>
+
+        <!-- Scroll-to-Bottom Button -->
+        <button id="scroll-to-bottom" onclick="scrollToBottom()">↓</button>
     </div>
 
     <script>
@@ -169,6 +183,24 @@
             document.getElementById('loader').classList.add('hidden');
             document.getElementById('content').classList.remove('hidden');
         }, 2000);
+
+        // Scroll-to-Bottom Functionality
+        const galleryDiv = document.getElementById('gallery');
+
+        // Show/hide scroll-to-bottom button
+        galleryDiv.addEventListener('scroll', () => {
+            const scrollButton = document.getElementById('scroll-to-bottom');
+            if (galleryDiv.scrollTop + galleryDiv.clientHeight < galleryDiv.scrollHeight - 100) {
+                scrollButton.style.display = 'block';
+            } else {
+                scrollButton.style.display = 'none';
+            }
+        });
+
+        // Scroll to the bottom
+        function scrollToBottom() {
+            galleryDiv.scrollTop = galleryDiv.scrollHeight;
+        }
     </script>
 </body>
 </html>
