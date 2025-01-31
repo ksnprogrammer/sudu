@@ -7,39 +7,94 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        /* Darker Background Gradient */
         body {
-            background: linear-gradient(135deg, #0a0a0a, #222222);
+            background: linear-gradient(135deg, #151515, #A91D3A);
             color: white;
             font-family: 'Arial', sans-serif;
             overflow-x: hidden;
-            overflow-y: auto; /* Ensures scrollbar visibility */
-            scroll-behavior: smooth; /* Smooth scrolling */
+            overflow-y: auto; /* Ensure scrolling */
+            scrollbar-width: thin;
+            scrollbar-color: #C73659 #151515;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #C73659;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #151515;
+        }
+
+        .font-cursive {
+            font-family: 'Dancing Script', cursive;
+        }
+
+        .masonry-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 16px;
+            padding: 20px;
+        }
+
+        .masonry-item {
+            break-inside: avoid;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+
+        .masonry-item img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        .masonry-item:hover img {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(255, 77, 77, 0.5);
+        }
+
+        .fade-in {
+            opacity: 0;
+            animation: fadeIn 1s ease-in forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .bounce {
+            animation: bounce 1.5s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
         }
     </style>
 </head>
-<body class="flex flex-col min-h-screen text-center relative overflow-hidden">
-    <!-- Header -->
+<body class="flex flex-col min-h-screen text-center relative overflow-auto">
     <header class="container mx-auto px-4 py-8">
-        <h1 class="font-cursive text-red-500 text-5xl md:text-6xl mb-4">Memorise</h1>
-        <p class="font-cursive text-red-400 text-xl italic">"Every moment we share becomes a beautiful memory"</p>
+        <h1 class="font-cursive text-red-500 text-5xl md:text-6xl mb-4 fade-in">Memorise World</h1>
+        <p class="font-cursive text-red-400 text-xl italic fade-in">"Every moment we share becomes a beautiful memory"</p>
     </header>
-    
-    <!-- Gallery (Renamed to Memorise) -->
+
     <main class="container mx-auto px-4 py-8" id="memorise">
         <div id="masonry-grid" class="masonry-grid">
-            <div class="masonry-item">
-                <img src="assets/IMG_20241227_124312.jpg" alt="Memory Image 1">
-            </div>
-            <div class="masonry-item">
-                <img src="assets/IMG_20241227_124314.jpg" alt="Memory Image 2">
-            </div>
+            <div class="masonry-item"><img src="assets/IMG_20241227_124312.jpg" alt="Memory 1"></div>
+            <div class="masonry-item"><img src="assets/IMG_20241227_124314.jpg" alt="Memory 2"></div>
+            <div class="masonry-item"><img src="assets/IMG_20241227_124318.jpg" alt="Memory 3"></div>
+            <div class="masonry-item"><img src="assets/IMG_20241227_124321.jpg" alt="Memory 4"></div>
         </div>
     </main>
-    
-    <!-- Footer -->
+
     <footer class="container mx-auto px-4 py-8">
-        <p class="font-cursive text-red-500 text-2xl">~ K_Sithara ❤️🖤 ~</p>
+        <p class="font-cursive text-red-500 text-2xl bounce">~ K_Sithara ❤️🖤 ~</p>
     </footer>
 </body>
 </html>
