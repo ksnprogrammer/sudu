@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sudu's Gallery ❤️🖤</title>
+    <title>Love Memorise ❤️🖤</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
     <style>
@@ -114,7 +114,7 @@
     <div id="content" class="hidden">
         <!-- Header -->
         <header class="container mx-auto px-4 py-8">
-            <h1 class="font-cursive text-red-500 text-5xl md:text-6xl mb-4 fade-in">Memories Gallery</h1>
+            <h1 class="font-cursive text-red-500 text-5xl md:text-6xl mb-4 fade-in">Memories Worldy</h1>
             <p class="font-cursive text-red-400 text-xl italic fade-in">"Every moment we share becomes a beautiful memory"</p>
         </header>
 
@@ -227,7 +227,16 @@
 
         // Trigger infinite scroll when user scrolls near the bottom
         window.addEventListener('scroll', () => {
-            if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 200) {
+            const { scrollTop, clientHeight, scrollHeight } = document.documentElement;
+
+            if (scrollTop + clientHeight >= scrollHeight - 200) {
+                loadMoreImages();
+            }
+        });
+
+        // Initial Load (Optional: Trigger loading more images if the page is too short)
+        window.addEventListener('load', () => {
+            if (document.documentElement.scrollHeight <= window.innerHeight) {
                 loadMoreImages();
             }
         });
