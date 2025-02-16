@@ -6,95 +6,90 @@
     <title>Love Memorise ❤️🖤</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            background: linear-gradient(135deg, #151515, #A91D3A);
-            color: white;
-            font-family: 'Arial', sans-serif;
-            overflow-x: hidden;
-            overflow-y: auto; /* Ensure scrolling */
-            scrollbar-width: thin;
-            scrollbar-color: #C73659 #151515;
-        }
-
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: #C73659;
-            border-radius: 4px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: #151515;
-        }
-
-        .font-cursive {
-            font-family: 'Dancing Script', cursive;
-        }
-
-        .masonry-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 16px;
-            padding: 20px;
-        }
-
-        .masonry-item {
-            break-inside: avoid;
-            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-        }
-
-        .masonry-item img {
-            width: 100%;
-            height: auto;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-        }
-
-        .masonry-item:hover img {
-            transform: scale(1.05);
-            box-shadow: 0 8px 16px rgba(255, 77, 77, 0.5);
-        }
-
-        .fade-in {
-            opacity: 0;
-            animation: fadeIn 1s ease-in forwards;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        .bounce {
-            animation: bounce 1.5s infinite;
-        }
-
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-    </style>
+    <link rel="stylesheet" href="css/styles.css">
 </head>
-<body class="flex flex-col min-h-screen text-center relative overflow-auto">
+<body class="dark-mode">
     <header class="container mx-auto px-4 py-8">
-        <h1 class="font-cursive text-red-500 text-5xl md:text-6xl mb-4 fade-in">Memorise World</h1>
-        <p class="font-cursive text-red-400 text-xl italic fade-in">"Every moment we share becomes a beautiful memory"</p>
+        <h1 class="font-cursive text-5xl md:text-6xl mb-4 fade-in neon-text">Welcome to Our Love World <span class="heart red-heart">❤️</span><span class="heart dark-heart">🖤</span></h1>
+        <p class="font-cursive text-xl italic fade-in neon-subtext">"Every moment we share becomes a beautiful memory"</p>
     </header>
 
-    <main class="container mx-auto px-4 py-8" id="memorise">
-        <div id="masonry-grid" class="masonry-grid">
-            <div class="masonry-item"><img src="assets/IMG_20241227_124312.jpg" alt="Memory 1"></div>
-            <div class="masonry-item"><img src="assets/IMG_20241227_124314.jpg" alt="Memory 2"></div>
-            <div class="masonry-item"><img src="assets/IMG_20241227_124318.jpg" alt="Memory 3"></div>
-            <div class="masonry-item"><img src="assets/IMG_20241227_124321.jpg" alt="Memory 4"></div>
+    <main class="container mx-auto px-4 py-8 text-center">
+        <p class="mb-6 neon-desc">A place where love and memories come alive. Explore our gallery or start chatting!</p>
+        <div class="space-x-4 mb-8">
+            <button class="neon-btn bg-red-500 hover:bg-red-600">Go to Memories</button>
+            <button class="neon-btn bg-pink-500 hover:bg-pink-600">Login to Chat</button>
         </div>
+
+        <section id="imageGallery" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div class="gallery-item fade-in">
+                <img src="https://via.placeholder.com/300x200/FF5733/FFFFFF?text=Memory+1" alt="Memory 1">
+            </div>
+            <div class="gallery-item fade-in">
+                <img src="https://via.placeholder.com/300x200/C70039/FFFFFF?text=Memory+2" alt="Memory 2">
+            </div>
+            <div class="gallery-item fade-in">
+                <img src="https://via.placeholder.com/300x200/900C3F/FFFFFF?text=Memory+3" alt="Memory 3">
+            </div>
+            <div class="gallery-item fade-in">
+                <img src="https://via.placeholder.com/300x200/581845/FFFFFF?text=Memory+4" alt="Memory 4">
+            </div>
+            <div class="gallery-item fade-in">
+                <img src="https://via.placeholder.com/300x200/4A235A/FFFFFF?text=Memory+5" alt="Memory 5">
+            </div>
+            <div class="gallery-item fade-in">
+                <img src="https://via.placeholder.com/300x200/3498DB/FFFFFF?text=Memory+6" alt="Memory 6">
+            </div>
+        </section>
     </main>
 
     <footer class="container mx-auto px-4 py-8">
-        <p class="font-cursive text-red-500 text-2xl bounce">~ K_Sithara ❤️🖤 ~</p>
+        <p class="font-cursive text-2xl bounce neon-signature">~ K_Sithara ❤️🖤 ~</p>
     </footer>
+
+    <div id="heart-container" class="heart-container"></div>
+
+    <button id="darkModeToggle" class="dark-mode-toggle">
+        Dark Mode: <span id="darkModeStatus">ON</span>
+    </button>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const heartContainer = document.getElementById('heart-container');
+            const numberOfHearts = 50;
+
+            for (let i = 0; i < numberOfHearts; i++) {
+                createHeart(heartContainer);
+            }
+
+            function createHeart(container) {
+                const heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.innerHTML = '❤️';
+                heart.style.left = `${Math.random() * 100}vw`;
+                heart.style.fontSize = `${Math.random() * 2 + 1}rem`;
+                heart.style.animationDuration = `${Math.random() * 3 + 2}s`;
+                container.appendChild(heart);
+                heart.addEventListener('animationiteration', () => {
+                    heart.remove();
+                    createHeart(container);
+                });
+            }
+
+            const darkModeToggle = document.getElementById('darkModeToggle');
+            const darkModeStatus = document.getElementById('darkModeStatus');
+            const body = document.body;
+
+            darkModeToggle.addEventListener('click', () => {
+                body.classList.toggle('light-mode');
+                body.classList.toggle('dark-mode');
+                if (body.classList.contains('dark-mode')) {
+                    darkModeStatus.textContent = 'ON';
+                } else {
+                    darkModeStatus.textContent = 'OFF';
+                }
+            });
+        });
+    </script>
 </body>
 </html>
